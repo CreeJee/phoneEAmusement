@@ -3,6 +3,33 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2d240dd085626f03f759c41d628a0c8b63e491f">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-9.8.0_432da21233516a247a20132907a93df54156c61d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.0.0_2e0e30f69c3b15e4bf9d60e11c551c298ead503a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee5304fd374e0b4ebf6b42d4037fbfb2c5336511">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-clearcut-9.8.0_28669ce0ae65443a79c4cdefbe17a58c39dc6813\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -12,12 +39,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jar="C:\Users\my\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_a00eef24d038fd86604df4a3d7ae8ed6cf9b5439\classes.dex" />
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.0.0_ef61b62c469ce50f74ba39c5943eca66f882ebd7\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -30,30 +57,57 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_7d40c6c405e3389b5ea2e9f12d18cbdea250957d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.8.0_ce9630e16719a800203ff80b2af6b5ca68ed20a0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="8eca3fcc4a48ddfbc5cc2a8b63d3df72824b88c5">
+        sha1="58dda549bf8b0cce4ed80ed6797aed8084cfb5ca">
         <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_149ad6abeac5c432436384daeb4161ad811c6a52\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\9.8.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_280c8779056f2a5ed845ac3ff2e775799ca6f1d9\classes.dex" />
+        sha1="363a20f1d25336e827dd24020f2ecdc42d62638f">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gass-9.8.0_cc4287b9935e29b98ad7d478519c0b270e5398ee\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\my\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\9.8.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_43bc036098e0d50a5b4b5948a1db21fb1bc230c3\classes.dex" />
+        sha1="e9b2cfdfd59b03643f1e240668275378b96615a8">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-9.8.0_8018354df9d098d46333ef68532fb455b9df95ba\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.8.0_94069eac442949a598d071d8a15b99a688f624e5\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -66,11 +120,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.8.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.8.0_2552c220dfa8dbbdba78c8f596440dc59fd4149d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="ddd12ee3a849efcf7162b178e24a69c27b2a4b36">
+        sha1="defac3a64cb942f1caac301d3b5750812a349651">
         <dex dex="C:\Users\my\AndroidStudioProjects\phoneEAmusement\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_cffcb4c44a1c8b1af358d6759134fec5f2e9eb44\classes.dex" />
     </item>
     <item
