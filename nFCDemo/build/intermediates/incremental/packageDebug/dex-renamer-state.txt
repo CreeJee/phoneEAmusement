@@ -1,0 +1,7 @@
+#Thu Nov 24 15:53:44 KST 2016
+base.0=C\:\\Users\\my\\AndroidStudioProjects\\phoneEAmusement\\nFCDemo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_1a430f576e4f47606b9b2fb21eec0b6e8a9977cb
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\my\\AndroidStudioProjects\\phoneEAmusement\\nFCDemo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_65daf78c908cc00275ead9c5c91d098f07d5a4f1\\classes.dex
+base.1=C\:\\Users\\my\\AndroidStudioProjects\\phoneEAmusement\\nFCDemo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_65daf78c908cc00275ead9c5c91d098f07d5a4f1
+file.0=C\:\\Users\\my\\AndroidStudioProjects\\phoneEAmusement\\nFCDemo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_1a430f576e4f47606b9b2fb21eec0b6e8a9977cb\\classes.dex
