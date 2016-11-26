@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.add) {
-            //Intent i = new Intent(getApplicationContext(),NfcCreateView.class);
-            //startActivity(i);
+            Intent i = new Intent(getApplicationContext(),NfcCreateView.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

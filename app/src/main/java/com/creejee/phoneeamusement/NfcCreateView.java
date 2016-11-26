@@ -24,6 +24,7 @@ import android.nfc.NdefRecord;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
+import static com.creejee.phoneeamusement.stringUtil.*;
 
 
 /**
@@ -43,62 +44,23 @@ public class NfcCreateView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_card);
         manager = (NfcManager) getApplicationContext().getSystemService(Context.NFC_SERVICE);
-        context = getApplicationContext();
         tagIntentOptions(getIntent());
     }
     @Override
     protected void onNewIntent(Intent intent) {
         tagIntentOptions(intent);
     }
-
-    public void readFromTag(Intent intent){
-        Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-        Ndef ndef = Ndef.get(tag);
-
-
-        try{
-            ndef.connect();
-
-            //txtType.setText(ndef.getType().toString());
-            //txtSize.setText(String.valueOf(ndef.getMaxSize()));
-            //txtWrite.setText(ndef.isWritable() ? "True" : "False");
-            Parcelable[] messages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
-
-            if (messages != null) {
-                NdefMessage[] ndefMessages = new NdefMessage[messages.length];
-                for (int i = 0; i < messages.length; i++) {
-                    ndefMessages[i] = (NdefMessage) messages[i];
-                }
-                NdefRecord record = ndefMessages[0].getRecords()[0];
-
-                byte[] payload = record.getPayload();
-                String text = new String(payload);
-                Toast.makeText(getApplicationContext(),text, Toast.LENGTH_SHORT).show();
-
-
-                ndef.close();
-
-            }
-        }
-        catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Cannot Read From Tag.", Toast.LENGTH_LONG).show();
-        }
-    }
     private void tagIntentOptions(Intent intent){
         if (manager.getDefaultAdapter() != null) {
+            context = getApplicationContext();
             if (manager.getDefaultAdapter().isNdefPushEnabled() && intent != null) {
                 mAdapter = NfcAdapter.getDefaultAdapter(this);
 
+                //시발 알고보니 UID값만 있던걸로
+
                 Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-                Ndef ndef = Ndef.get(tag);
-                if (ndef == null) {
-                    Toast.makeText(getApplicationContext(),"un support", Toast.LENGTH_SHORT).show();
-
-
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "support", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(getApplicationContext(),"uid : " + bin2hex(tag.getId()), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"un support \n tagName" + arrayToString(tag.getTechList(),"\n"), Toast.LENGTH_SHORT).show();
 
             } else {
                 Toast.makeText(getApplicationContext(), "android beam을 필요로 합니다.", Toast.LENGTH_SHORT).show();
