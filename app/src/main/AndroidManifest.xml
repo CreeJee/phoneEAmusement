@@ -22,6 +22,8 @@
             android:label="@string/app_card">
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/android.nfc.action.TECH_DISCOVERED"/>
             </intent-filter>
             <meta-data
                 android:name="android.nfc.action.TECH_DISCOVERED"

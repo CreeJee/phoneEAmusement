@@ -1,8 +1,11 @@
 package com.creejee.phoneeamusement;
 /**
- * @// TODO: 2016-11-21 NFC리딩 정보 확인하고 독학후 확실히 모듈화 시키기
+ * @ TODO: 2016-11-21 NFC리딩 정보 확인하고 독학후 확실히 모듈화 시키기
+ * @ TODO: 2016-11-27 sqlite 관련 select insert 이후 nfc정보 보내기 까지 완료
  * */
+
 import android.content.Intent;
+import android.nfc.NfcManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,10 +23,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        Toast.makeText(getApplicationContext(), "구동완료", Toast.LENGTH_SHORT).show();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
