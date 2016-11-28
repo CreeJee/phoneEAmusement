@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="83dp"
-        android:id="@+id/textView4"
+        android:id="@+id/sacnMessageText"
         android:text="@string/action_scan_message"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="30sp"

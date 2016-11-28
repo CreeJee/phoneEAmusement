@@ -9,6 +9,9 @@
     <!--기능문자열 관련 제목 스트링-->
     <string name="action_settings">설정</string>
     <string name="action_scan">스캔</string>
+    <string name="action_editText_id">카드이름:</string>
+    <string name="action_send_accept">전송</string>
+    <string name="action_send_cancel">취소</string>
     
     <string name="action_scan_message">카드 스캔이 필요합니다.</string>
     <string name="action_scaning_msg">스캔중</string>

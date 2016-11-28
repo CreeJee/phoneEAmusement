@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcManager;
 import android.nfc.Tag;
+import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.creejee.phoneeamusement.stringUtil.*;
@@ -27,13 +30,11 @@ public class NfcCreateView extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-
         pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
                 getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
         mAdapter = NfcAdapter.getDefaultAdapter(this);
         mAdapter.enableForegroundDispatch(this ,pendingIntent, null, null);
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -72,13 +73,23 @@ public class NfcCreateView extends AppCompatActivity {
             if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
                 //시발 알고보니 UID값만 있던걸로
                 Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+
+
                 if(tag != null) {
-                    Toast.makeText(getApplicationContext(), "uid : " + bin2hex(tag.getId()), Toast.LENGTH_SHORT).show();
+                    /*String result = "";
+                    for(int i=0; i<tag.getId().length; i++) {
+                        result += String.format("%x",tag.getId()[i])+":";
+                    }
+                    TextView t =(TextView) findViewById(R.id.sacnMessageText);
+                    t.setText(result);*/
+                    //Toast.makeText(getApplicationContext(), "uid ( " + result+")", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(),NfcEditView.class);
+                    i.putExtra("tagInfo",tag.getId());
+                    startActivity(i);
+                    this.finish();
                 }
             }
 
     }
-
-
 
 }

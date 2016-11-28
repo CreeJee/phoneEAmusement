@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:rowCount="2"
+    >
+
+    <EditText
+        android:text=""
+        android:id="@+id/editName"
+        android:fontFamily="sans-serif"
+        android:typeface="normal"
+        android:textSize="24sp"
+        android:gravity="center_vertical"
+        android:layout_gravity="fill_horizontal|bottom"
+        android:layout_rowSpan="1"
+        android:layout_columnSpan="1"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:inputType="text|textCapCharacters|textAutoComplete"
+        android:selectAllOnFocus="true" />
+
+    <TextView
+        android:text="@string/action_editText_id"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_rowSpan="1"
+        android:layout_columnSpan="1"
+
+        android:textStyle="normal|bold"
+        android:textSize="32sp"
+        android:textAlignment="textStart"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:labelFor="@+id/editName"
+        android:layout_row="0"
+        android:layout_column="0" />
+
+    <Button
+        android:text="@string/action_send_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:textSize="24sp"
+        style="@android:style/Widget.Button"
+        android:background="@android:color/holo_blue_dark"
+        android:elevation="0dp"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif"
+        android:contentDescription="@string/action_send_accept"
+        android:lineSpacingExtra="8sp"
+        android:layout_marginTop="300dp" />
+
+</GridLayout>
