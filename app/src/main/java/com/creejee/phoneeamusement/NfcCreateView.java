@@ -7,12 +7,17 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcManager;
 import android.nfc.Tag;
 import android.nfc.tech.NdefFormatable;
+import android.nfc.tech.NfcV;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
 
 import static com.creejee.phoneeamusement.stringUtil.*;
 
@@ -69,24 +74,59 @@ public class NfcCreateView extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "nfc를 지원하지 않습니다.", Toast.LENGTH_SHORT).show();
         }
     }
+    public static byte[] processNfcIntent(Intent intent,byte blockNo){
+        Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+        if(tag != null){
+            byte[] id = tag.getId(),data = null;
+            // set up read command buffer
+            //byte blockNo = 0; // block address
+            byte[] readCmd = new byte[3 + id.length];
+            readCmd[0] = 0x20; // set "address" flag (only send command to this tag)
+            readCmd[1] = 0x20; // ISO 15693 Single Block Read command byte
+            System.arraycopy(id, 0, readCmd, 2, id.length); // copy ID
+            readCmd[2 + id.length] = blockNo; // 1 byte payload: block address
+
+            NfcV tech = NfcV.get(tag);
+            if (tech != null) {
+                // send read command
+                try {
+                    tech.connect();
+                    data = tech.transceive(readCmd);
+                    return data;
+                } catch (IOException e) {
+                    Log.e("tagError(transceive)",e.toString());
+                } finally {
+                    try {
+                        tech.close();
+                    } catch (IOException e) {
+                        Log.e("tagError(Close)",e.toString());
+                    }
+                }
+            }
+        }
+        return null;
+    }
     private void tagIntentOptions(Intent intent){
             if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
                 //시발 알고보니 UID값만 있던걸로
                 Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-
+                byte[] tagId = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
+                byte[] tagContent;
 
                 if(tag != null) {
-                    /*String result = "";
-                    for(int i=0; i<tag.getId().length; i++) {
-                        result += String.format("%x",tag.getId()[i])+":";
-                    }
-                    TextView t =(TextView) findViewById(R.id.sacnMessageText);
-                    t.setText(result);*/
-                    //Toast.makeText(getApplicationContext(), "uid ( " + result+")", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(),NfcEditView.class);
-                    i.putExtra("tagInfo",tag.getId());
-                    startActivity(i);
-                    this.finish();
+                    tagContent = processNfcIntent(intent,(byte)27);
+
+                        Intent i = new Intent(getApplicationContext(),NfcEditView.class);
+                        i.putExtra("tagInfo",tag.getId()); //tag total send byte
+                        i.putExtra("tagId",tagId); //tag unique id
+                        i.putExtra("tagContent",tagContent); // tag Content id
+                        i.putExtra("action_type","insert");
+                        startActivity(i);
+                        this.finish();
+                    /*if(tagContent != null) {
+                        TextView t = (TextView) findViewById(R.id.sacnMessageText);
+                        t.setText(new String(tagContent));
+                    }*/
                 }
             }
 

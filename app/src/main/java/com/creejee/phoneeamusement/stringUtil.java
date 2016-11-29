@@ -1,5 +1,8 @@
 package com.creejee.phoneeamusement;
+import android.nfc.tech.NfcV;
+import android.widget.Toast;
 
+import java.io.IOException;
 import java.math.BigInteger;
 
 /**
@@ -15,7 +18,14 @@ public class stringUtil {
         }
         return ret;
     }
-    static String bin2hex(byte[] data) {
-        return String.format("%0" + (data.length * 2) + "X", new BigInteger(1,data));
+    final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
+    public static String bytesToHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for ( int j = 0; j < bytes.length; j++ ) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = hexArray[v >>> 4];
+            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+        }
+        return new String(hexChars);
     }
 }
