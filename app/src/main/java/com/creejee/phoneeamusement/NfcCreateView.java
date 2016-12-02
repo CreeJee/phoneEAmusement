@@ -74,18 +74,18 @@ public class NfcCreateView extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "nfc를 지원하지 않습니다.", Toast.LENGTH_SHORT).show();
         }
     }
-    public static byte[] processNfcIntent(Intent intent,byte blockNo){
+    public static byte[] processNfcIntent(Intent intent,byte blockStart,byte blockEnd)   {
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         if(tag != null){
             byte[] id = tag.getId(),data = null;
             // set up read command buffer
             //byte blockNo = 0; // block address
-            byte[] readCmd = new byte[3 + id.length];
+            byte[] readCmd = new byte[4 + id.length];
             readCmd[0] = 0x20; // set "address" flag (only send command to this tag)
-            readCmd[1] = 0x20; // ISO 15693 Single Block Read command byte
+            readCmd[1] = 0x23; // ISO 15693 Single Block Read command byte (20) , ISO 15693 Multi Block Read command byte (23)
             System.arraycopy(id, 0, readCmd, 2, id.length); // copy ID
-            readCmd[2 + id.length] = blockNo; // 1 byte payload: block address
-
+            readCmd[2 + id.length] = blockStart; // 1 byte payload: block address , start byte code
+            readCmd[3 + id.length] = blockEnd; // null , end byte code
             NfcV tech = NfcV.get(tag);
             if (tech != null) {
                 // send read command
@@ -114,7 +114,7 @@ public class NfcCreateView extends AppCompatActivity {
                 byte[] tagContent;
 
                 if(tag != null) {
-                    tagContent = processNfcIntent(intent,(byte)27);
+                        tagContent = processNfcIntent(intent,(byte)27,(byte)0);
 
                         Intent i = new Intent(getApplicationContext(),NfcEditView.class);
                         i.putExtra("tagInfo",tag.getId()); //tag total send byte

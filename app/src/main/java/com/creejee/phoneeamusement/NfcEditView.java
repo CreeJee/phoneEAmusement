@@ -18,4 +18,5 @@ public class NfcEditView  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_layout);
     }
+
 }
