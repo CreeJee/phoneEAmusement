@@ -13,11 +13,11 @@ import java.sql.Blob;
  * Created by my on 2016-12-03.
  */
 
-public class sqliteManager extends SQLiteOpenHelper{
+public class SqliteManager extends SQLiteOpenHelper{
     public SQLiteDatabase _db = null;
     public Cursor cursor = null;
 
-    public sqliteManager(Context context, String name, CursorFactory factory, int version) {
+    public SqliteManager(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
     @Override

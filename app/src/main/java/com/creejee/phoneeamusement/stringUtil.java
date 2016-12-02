@@ -9,7 +9,7 @@ import java.math.BigInteger;
  * Created by my on 2016-11-26.
  */
 
-public class stringUtil {
+public class StringUtil {
     static String arrayToString(String str[],String subStr){
         int len = str.length;
         String ret = "";
