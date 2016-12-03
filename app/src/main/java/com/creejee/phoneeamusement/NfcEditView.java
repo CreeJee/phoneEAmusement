@@ -17,18 +17,19 @@ import android.widget.Toast;
  */
 
 public class NfcEditView  extends AppCompatActivity {
-    public SqliteManager sqliteManager = null;
+    public CardDbManager cardDbManager = null;
     public String dbName = "eAphone";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_layout);
-        sqliteManager = new SqliteManager(getApplicationContext(),dbName,null,1);
+        cardDbManager = new CardDbManager(getApplicationContext(),dbName,null,1);
         Button submitBtn =(Button) findViewById(R.id.submitBtn);
         final EditText edName = (EditText) findViewById(R.id.editName);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cardDbManager.open("r");
                 //edName.getText();
                 //getIntent().getExtras().get();
             }

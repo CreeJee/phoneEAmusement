@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-import static com.creejee.phoneeamusement.stringUtil.*;
+import static com.creejee.phoneeamusement.StringUtil.*;
 
 
 /**
