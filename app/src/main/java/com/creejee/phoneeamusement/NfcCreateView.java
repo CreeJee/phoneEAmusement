@@ -120,7 +120,7 @@ public class NfcCreateView extends AppCompatActivity {
                         i.putExtra("tagInfo",tag.getId()); //tag total send byte
                         i.putExtra("tagId",tagId); //tag unique id
                         i.putExtra("tagContent",tagContent); // tag Content id
-                        i.putExtra("action_type","insert");
+                        i.putExtra("action","insert");
                         startActivity(i);
                         this.finish();
                     /*if(tagContent != null) {

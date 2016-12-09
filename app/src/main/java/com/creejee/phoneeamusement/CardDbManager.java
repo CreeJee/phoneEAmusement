@@ -33,12 +33,12 @@ public class CardDbManager extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         // 새로운 테이블을 생성한다.
         // create table 테이블명 (컬럼명 타입 옵션);
-            db.execSQL("CREATE TABLE IF NOT EXISTS `cardList`(" +
+            db.execSQL("CREATE TABLE `cardList`(" +
                         " `idx` INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        " `cardName` TEXT "+
-                        " `tagInfo` BLOB, " +
-                        " `tagId` BLOB" +
-                        " `tagContent` BLOB"+ //split data for ','
+                        " `cardName` TEXT, "+
+                        " `tagInfo` TEXT, " +
+                        " `tagId` TEXT," +
+                        " `tagContent` TEXT"+ //split data for ','
                     ");");
     }
     @Override
@@ -72,16 +72,17 @@ public class CardDbManager extends SQLiteOpenHelper{
     }
     public DbStruct getData() {
         if(this.mode == "r") {
+            dbStruct.clear();
             int cursorNum = 0;
             while (cursor.moveToNext()) {
-                dbStruct.putRow(cursorNum,"idx",cursor.getInt(0));
+                dbStruct.putRow(cursorNum,"idx",cursor.getString(0));
                 dbStruct.putRow(cursorNum,"cardName",cursor.getString(1));
-                dbStruct.putRow(cursorNum,"tagInfo",cursor.getBlob(2));
-                dbStruct.putRow(cursorNum,"tagId",cursor.getBlob(3));
-                dbStruct.putRow(cursorNum,"tagContent",cursor.getBlob(4));
+                dbStruct.putRow(cursorNum,"tagInfo",cursor.getString(2));
+                dbStruct.putRow(cursorNum,"tagId",cursor.getString(3));
+                dbStruct.putRow(cursorNum,"tagContent",cursor.getString(4));
                 cursorNum++;
             }
-            return DbStruct.getInstance();
+            return dbStruct;
         }
         else{
             throw new ArithmeticException("when called your mode is not readable");

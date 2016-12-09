@@ -5,6 +5,7 @@ package com.creejee.phoneeamusement;
  * */
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.nfc.NfcManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,27 +14,53 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.creejee.phoneeamusement.CardDbManager;
+
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+
+import static android.R.drawable.ic_input_get;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    Toolbar toolbar;
+    DrawerLayout drawer;
+    ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
+    CardDbManager db;
+    private String dbName = "eAphone";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Toast.makeText(getApplicationContext(), "구동완료", Toast.LENGTH_SHORT).show();
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        db = new CardDbManager(getApplicationContext(),dbName,null,1);
+        DbStruct dbData = db.open("r").query("SELECT * FROM `cardList` ORDER BY `idx` DESC").getData();
+
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if (!dbData.isEmpty()) {
+            for (int i = 0; i < dbData.size(); i++) {
+                navigationView.getMenu().add(dbData.getRow(i).get("cardName"));
+            }
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"database is null",Toast.LENGTH_SHORT).show();
+        }
         navigationView.setNavigationItemSelectedListener(this);
     }
 
