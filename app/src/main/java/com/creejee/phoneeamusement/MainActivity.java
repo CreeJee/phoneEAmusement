@@ -54,8 +54,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         if (!dbData.isEmpty()) {
-            for (int i = 0; i < dbData.size(); i++) {
-                navigationView.getMenu().add(dbData.getRow(i).get("cardName"));
+            int size = dbData.size();
+            for (int i = 0; i < size/5; i++) {
+                Hashtable<String,String> tmp = new Hashtable<>();
+                String msg ="";
+                try {
+                    tmp = dbData.getRow(0);
+                    msg = tmp.get(0);
+                }
+                catch(NullPointerException e) {
+                    Toast.makeText(getApplicationContext(),"card is null",Toast.LENGTH_SHORT).show();
+                }
+                navigationView.getMenu().add(msg);
             }
         }
         else{

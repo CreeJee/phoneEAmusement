@@ -60,6 +60,7 @@ public class CardDbManager extends SQLiteOpenHelper{
         }
         else if(this.mode == "r"){
             cursor = _db.rawQuery(_query,null);
+            cursor.moveToFirst();
             Log.d("CardDbMangager","is Read Mode");
         }
         else {
