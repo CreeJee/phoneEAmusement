@@ -6,4 +6,4 @@ using eAmusement for android
 * scan card data (complete)
 * add page for application (complete)
 * add menu for card list (incomplete)
-    * setting class "ListMultimap< Integer,HashTable< String,String>>";
+    * setting class "Table< Integer,String,String>";
