@@ -48,6 +48,7 @@ public class NfcEditView  extends AppCompatActivity {
                             cardDbManager.open("w").query(sql).close();
                             Intent i = new Intent(getApplicationContext(), MainActivity.class);
                             i.addFlags(FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(i);
                             finish();
                         } else if (bundle.getString("action").equals("update")) {
                             Toast.makeText(getApplicationContext(), "update", Toast.LENGTH_SHORT).show();

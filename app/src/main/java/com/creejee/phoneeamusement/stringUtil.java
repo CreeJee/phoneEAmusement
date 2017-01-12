@@ -1,9 +1,6 @@
 package com.creejee.phoneeamusement;
-import android.nfc.tech.NfcV;
-import android.widget.Toast;
+import android.support.annotation.NonNull;
 
-import java.io.IOException;
-import java.math.BigInteger;
 
 /**
  * Created by my on 2016-11-26.
@@ -27,5 +24,14 @@ public class StringUtil {
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
         }
         return new String(hexChars);
+    }
+    @NonNull
+    public static  String hexToString(String hex){
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < hex.length(); i+=2) {
+            String str = hex.substring(i, i+2);
+            output.append((char)Integer.parseInt(str, 16));
+        }
+        return output.toString();
     }
 }

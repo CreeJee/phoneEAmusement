@@ -1,7 +1,11 @@
 package com.creejee.phoneeamusement;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 //TODO : add multimap import
 
 /**
@@ -11,34 +15,58 @@ import java.util.Hashtable;
 public class DbStruct {
     //private vars
     private static DbStruct instance = new DbStruct();
-    private ArrayList<Hashtable<String,String>> dbStruct;
-    private Hashtable<String,String> tempResult;
+    private Multimap<String,String> dbStruct;
+    private HashMap<String,String> temp;
     //constructor
     private DbStruct() {
-        dbStruct = new ArrayList<>();
-        tempResult = new Hashtable<>();
-}
-
+        dbStruct = ArrayListMultimap.create();
+    }
     //instance
     public static DbStruct getInstance() {
         return instance;
     }
 
-    //getData
-    public String getColumn(Integer rowKey,String columnName){
-        String ret = dbStruct.get(rowKey).get(columnName);
-        if(ret != null){
-            return ret;
-        }
-        else{
-            throw new NullPointerException("value is null");
-        }
+    //putData
+    public void putRow(String columnName,String someValues){
+        dbStruct.put(columnName,someValues);
     }
-    public void putRow(Integer rowKey,String columnName,String someValues){
-        rowKey = (rowKey > 0) ? rowKey : dbStruct.size();
-        tempResult.put(columnName,someValues);
-        dbStruct.add(tempResult);
-        tempResult.clear();
+    //getData
+    public Map<String,String> get(String[] keyList){
+        Map<String,String> res = new HashMap<>();
+        for (Map.Entry collection : this.dbStruct.entries()){
+            for (int i = 0; i < keyList.length; i++) {
+                if(keyList[i] == collection.getKey()){
+                    res.put(collection.getKey().toString(),collection.getValue().toString());
+                }
+            }
+        }
+        return res;
+    }
+    public Map<String,String> get(Collection<String> keyList){
+        Map<String,String> res = new HashMap<>();
+        for (Map.Entry collection : this.dbStruct.entries()){
+            for (String key:keyList) {
+                if(key == collection.getKey()){
+                    res.put(collection.getKey().toString(),collection.getValue().toString());
+                }
+            }
+        }
+        return res;
+    }
+    public String get(String keyName){
+        for (Map.Entry collection : this.dbStruct.entries()){
+                if(keyName == collection.getKey()) {
+                    return collection.getValue().toString();
+                }
+        }
+        return null;
+    }
+    public Map<String,String> get(){
+        Map<String,String> res = new HashMap<>();
+        for (Map.Entry collection : this.dbStruct.entries()){
+            res.put(collection.getKey().toString(),collection.getValue().toString());
+        }
+        return res;
     }
 
     //data check
@@ -53,11 +81,12 @@ public class DbStruct {
     public int size(){
         return dbStruct.size();
     }
-    /*get set function*/
-    public void setdbStruct(ArrayList<Hashtable<String,String>> dbStruct) {
-        this.dbStruct = dbStruct;
-    }
-    public ArrayList<Hashtable<String,String>> getdbStruct() {
+    //getset
+
+    public Multimap<String, String> getDbStruct() {
         return dbStruct;
+    }
+    public void setDbStruct(Multimap<String, String> dbStruct) {
+        this.dbStruct = dbStruct;
     }
 }

@@ -15,4 +15,7 @@
     
     <string name="action_scan_message">카드 스캔이 필요합니다.</string>
     <string name="action_scaning_msg">스캔중</string>
+
+    <!--description by name-->
+    <string name="service_send_name">cardReader</string>
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <host-apdu-service xmlns:android="http://schemas.android.com/apk/res/android">
+        <aid-group android:category="other" android:description="@string/service_send_name">
+            <aid-filter android:name="E00401002DE87364" />
+        </aid-group>
+    </host-apdu-service>
+</resources>

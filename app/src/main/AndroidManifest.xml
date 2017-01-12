@@ -29,8 +29,15 @@
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
-        <activity android:name=".NfcEditView">
-
+        <activity
+            android:name=".NfcEditView">
+        </activity>
+        <activity
+            android:name=".CardSelectView">
+            <intent-filter>
+                <action android:name="android.nfc.action.ACTION_NDEF_DISCOVERED" />
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
         </activity>
     </application>
     <uses-permission android:name="android.permission.NFC" />

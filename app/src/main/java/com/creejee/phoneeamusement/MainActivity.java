@@ -17,10 +17,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.creejee.phoneeamusement.CardDbManager;
+import com.google.common.collect.Table;
 
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -50,22 +53,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         db = new CardDbManager(getApplicationContext(),dbName,null,1);
         DbStruct dbData = db.open("r").query("SELECT * FROM `cardList` ORDER BY `idx` DESC").getData();
-
+        db.close();
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         if (!dbData.isEmpty()) {
             int size = dbData.size();
-            for (int i = 0; i < size/5; i++) {
-                Hashtable<String,String> tmp = new Hashtable<>();
-                String msg ="";
-                try {
-                    tmp = dbData.getRow(0);
-                    msg = tmp.get(0);
+            String msg = "";
+            for (Map.Entry collection : dbData.getDbStruct().entries()){
+                if(collection.getKey() == "cardName") {
+                    msg = collection.getValue().toString();
+                    final String Msg = msg;
+                    navigationView.getMenu().add(msg).setIcon(R.drawable.ic_menu_gallery).setOnMenuItemClickListener(
+                            new MenuItem.OnMenuItemClickListener() {
+                                @Override
+                                public boolean onMenuItemClick(MenuItem item) {
+                                    Intent i = new Intent(getApplicationContext(),CardSelectView.class);
+                                    i.putExtra("action","update");
+                                    i.putExtra("cardName",Msg);
+                                    startActivity(i);
+
+                                    return false;
+                                }
+                            }
+                    );
                 }
-                catch(NullPointerException e) {
-                    Toast.makeText(getApplicationContext(),"card is null",Toast.LENGTH_SHORT).show();
-                }
-                navigationView.getMenu().add(msg);
             }
         }
         else{

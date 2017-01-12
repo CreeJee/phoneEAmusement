@@ -108,7 +108,6 @@ public class NfcCreateView extends AppCompatActivity {
     }
     private void tagIntentOptions(Intent intent){
             if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
-                //시발 알고보니 UID값만 있던걸로
                 Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
                 byte[] tagId = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
                 byte[] tagContent;

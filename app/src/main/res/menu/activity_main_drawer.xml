@@ -18,10 +18,6 @@
                 android:id="@+id/bemani"
                 android:icon="@android:drawable/ic_input_get"
                 android:title="Bemani" />
-            <item
-                android:id="@+id/other"
-                android:icon="@android:drawable/ic_input_get"
-                android:title="other" />
         </menu>
     </item>
 

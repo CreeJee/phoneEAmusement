@@ -27,15 +27,21 @@ public class CardDbManager extends SQLiteOpenHelper{
 
     public CardDbManager(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
-
     }
+    @Override
+    public void finalize() {
+        _db.close();
+        cursor.close();
+        mode = null;
+    }
+    /*TODO: add destructor for CardDbManager*/
     @Override
     public void onCreate(SQLiteDatabase db) {
         // 새로운 테이블을 생성한다.
         // create table 테이블명 (컬럼명 타입 옵션);
             db.execSQL("CREATE TABLE `cardList`(" +
                         " `idx` INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        " `cardName` TEXT, "+
+                        " `cardName` TEXT UNIQUE, "+
                         " `tagInfo` TEXT, " +
                         " `tagId` TEXT," +
                         " `tagContent` TEXT"+ //split data for ','
@@ -60,7 +66,7 @@ public class CardDbManager extends SQLiteOpenHelper{
         }
         else if(this.mode == "r"){
             cursor = _db.rawQuery(_query,null);
-            cursor.moveToFirst();
+            cursor.move(0);
             Log.d("CardDbMangager","is Read Mode");
         }
         else {
@@ -76,11 +82,11 @@ public class CardDbManager extends SQLiteOpenHelper{
             dbStruct.clear();
             int cursorNum = 0;
             while (cursor.moveToNext()) {
-                dbStruct.putRow(cursorNum,"idx",cursor.getString(0));
-                dbStruct.putRow(cursorNum,"cardName",cursor.getString(1));
-                dbStruct.putRow(cursorNum,"tagInfo",cursor.getString(2));
-                dbStruct.putRow(cursorNum,"tagId",cursor.getString(3));
-                dbStruct.putRow(cursorNum,"tagContent",cursor.getString(4));
+                dbStruct.putRow("idx",cursor.getString(0));
+                dbStruct.putRow("cardName",cursor.getString(1));
+                dbStruct.putRow("tagInfo",cursor.getString(2));
+                dbStruct.putRow("tagId",cursor.getString(3));
+                dbStruct.putRow("tagContent",cursor.getString(4));
                 cursorNum++;
             }
             return dbStruct;
